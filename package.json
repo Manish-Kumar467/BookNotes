@@ -1,0 +1,20 @@
+{
+  "name": "capstone_project_5",
+  "version": "1.0.0",
+  "description": "Made a project based on express.js, node JS, API, Database & Postgres SQL usage. Full frontend and backend development.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Manish Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.3",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}
