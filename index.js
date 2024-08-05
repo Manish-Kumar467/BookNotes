@@ -26,11 +26,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 // for using static css and image files 
 app.use(express.static("public"));
 
-// root for first home page
+
+// route for first home page
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })
 
+// route for add page
+app.post("/add", (req, res) => {
+    res.render("addbook.ejs");
+}) 
+
+// route for after adding new book
+app.post("/addnew", (req, res) => {
+    res.redirect("/");
+})
 // making the server request run on port 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
