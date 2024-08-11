@@ -1,6 +1,7 @@
 <%- include("partials/header.ejs") %>
 <main class="container">
     <h1>Books I Have Read.</h1>
+    <!-- Add section -->
       <form action="/add" method="post">
         <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
             <div class="d-grid gap-2">
@@ -8,7 +9,9 @@
             </div>
           </div>
       </form>
+      <!-- Section of showing the books from database -->
     <h2>Here are some books i have read. </h2>
+    <!-- Sorting option -->
     <form action="/" method="get">
       <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
         <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
@@ -19,22 +22,31 @@
     </form>
     <hr>
     <div >
+      <!-- using ejs to let it print book by for loop -->
       <% for(let book of bookInfo) { %>
         <div >
+          <!-- Book Title -->
           <p class="booktitle" id="title<%=book.id%>">
             <label><%= book.book_name %></label><br>
-            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="coverImage"><br>
-            <img src="https://covers.openlibrary.org/a/olid/<%= book.author_key %>-S.jpg" alt="author_picture">
+            <!-- Showing book cover and author photo if not found load up the predefined pictures -->
+            <% if (book.isbn !== '0') { %>
+              <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="coverImage"><br>
+              <img src="https://covers.openlibrary.org/a/olid/<%= book.author_key %>-S.jpg" alt="author_picture">
+            <% }else{ %>
+              <img src="https://i.pinimg.com/564x/e6/9d/67/e69d67edadb25b4a46e5afc583b9cf1d.jpg" style="height: 350px; width:250px;" alt="Cover_picture"><br>
+              <img src="https://i.pinimg.com/736x/84/09/09/84090996cc1d0cedf7b63afc72274595.jpg" style="height: 100px; width:100px;" alt="author_picture">
+              <% } %>
+              <!-- Author name, rating, notes, time section -->
             <label style="color:aliceblue; font-size: 20px;">By <%= book.author_name %></label><br>
             <label style="color: lightgreen; font-size: 15px;">RATING: <%= book.rating %>/10 </label><br>
             <label style="color:rgb(32, 228, 147); font-size: 25px;"> NOTES: <%= book.notes %></label><br>
             <label style="color:grey; font-size: 15px;"><%= book.daytime %></label>
           </p>
-
+          <!-- delete section -->
           <form action="/delete" method="post">
             <button type="submit" class="btn btn-primary del_btn" name="deleteBookId" value="<%= book.id %>">Delete</button>
           </form>
-  
+          <!-- edit section -->
           <form action="/edit" method="post">
             <button id="edit<%=book.id%>" class="edit_btn btn btn-primary" name="editBookId" value="<%= book.id  %>">Edit</button>
           </form>
