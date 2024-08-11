@@ -9,12 +9,22 @@
           </div>
       </form>
     <h2>Here are some books i have read. </h2>
+    <form action="/" method="get">
+      <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+        <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+          <li><a class="dropdown-item rounded-2 <% if (sort === 'recency') { %>active<% } %>" href="/?sort=recency">Sort By Recency</a></li>
+          <li><a class="dropdown-item rounded-2 <% if (sort === 'rating') { %>active<% } %>" href="/?sort=rating">Sort By Rating</a></li>
+      </ul>
+      </div>
+    </form>
     <hr>
     <div >
       <% for(let book of bookInfo) { %>
         <div >
           <p class="booktitle" id="title<%=book.id%>">
             <label><%= book.book_name %></label><br>
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="coverImage"><br>
+            <img src="https://covers.openlibrary.org/a/olid/<%= book.author_key %>-S.jpg" alt="author_picture">
             <label style="color:aliceblue; font-size: 20px;">By <%= book.author_name %></label><br>
             <label style="color: lightgreen; font-size: 15px;">RATING: <%= book.rating %>/10 </label><br>
             <label style="color:rgb(32, 228, 147); font-size: 25px;"> NOTES: <%= book.notes %></label><br>

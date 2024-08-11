@@ -28,8 +28,12 @@ app.use(express.static("public"));
 
 // making a function for adding all the books combined information in the array we created.
 var lastIndex = 1; // initializing the variable lastIndex for tracking the index we want to add next book to.
-async function addbook(){
-    const result = await db.query("SELECT book.id, book.book_name, book.author_name, book.isbn, book.author_key, information.notes, information.rating, information.daytime FROM book INNER JOIN information ON book.id=information.id");
+async function addbook(sortOption){
+    var result = await db.query(`SELECT book.id, book.book_name, book.author_name, book.isbn, book.author_key, information.notes, information.rating, information.daytime FROM book INNER JOIN information ON book.id=information.id`);
+
+    if(sortOption === 'rating'){
+        result = await db.query(`SELECT book.id, book.book_name, book.author_name, book.isbn, book.author_key, information.notes, information.rating, information.daytime FROM book INNER JOIN information ON book.id=information.id ORDER BY information.rating DESC`);
+    }
     let books = [];
     result.rows.forEach((book) => {
         books.push(book);
@@ -42,8 +46,15 @@ async function addbook(){
 
 // route for first home page
 app.get("/", async(req, res) => {
-    const books = await addbook(); // using the function to add the books
-    res.render("index.ejs", {bookInfo: books});
+    const sortOption = req.query.sort || 'recency'; // Default to recency
+    const books = await addbook(sortOption); // using the function to add the books
+
+   
+    res.render("index.ejs", {
+        bookInfo: books, 
+        sort: sortOption,
+        
+    });
 });
 
 // route for add page
@@ -234,8 +245,8 @@ app.post("/update", async(req, res)=>{
 app.post("/delete", async(req, res) => {
     const delete_id = req.body.deleteBookId;
     console.log(`Id to be deleted: ${delete_id}`);
-    await db.query("DELETE FROM book WHERE id=$1", [delete_id]);
     await db.query("DELETE FROM information WHERE id=$1", [delete_id]);
+    await db.query("DELETE FROM book WHERE id=$1", [delete_id]);
     res.redirect("/");
 });
 

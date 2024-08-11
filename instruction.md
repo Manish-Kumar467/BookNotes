@@ -67,7 +67,8 @@ Include a Readme.md file that explains how to start your server, what commands a
 10. Update and upgrade the styling.
 
 # Remaining 
-1. Navigation bar
-2. icons and images
+1. Navigation bar, done
+2. icons and images, done
 3. edit section , done
-4. sorting section
+4. sorting section, done
+5. styling
