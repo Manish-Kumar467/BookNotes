@@ -26,7 +26,7 @@
           </form>
   
           <form action="/edit" method="post">
-            <button id="edit<%=book.id%>" class="edit_btn btn btn-primary" value="<%= book.id  %>" onclick="handler('<%=book.id%>')">Edit</button>
+            <button id="edit<%=book.id%>" class="edit_btn btn btn-primary" name="editBookId" value="<%= book.id  %>">Edit</button>
           </form>
         </div>
         <hr>

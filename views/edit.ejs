@@ -2,12 +2,13 @@
 <main class="container">
 <h2>Edit the Book Details</h2>
 <form class="form-label" action="/update" method="post">
+    <input type="hidden" name="editBookId" value="<%= update.id %>">
     <label for="title" value="title">Title: </label><br>
-    <input type="text" name="title" id="title" size="50"><br><br>
+    <input type="text" name="title" id="title" size="50" value="<%= update.book_name %>"><br><br>
     <label for="rating" value="rating">Rating: </label><br>
-    <input type="number" name="rating" id="rating" min="1" max="10"><br><br>
+    <input type="number" name="rating" id="rating" min="1" max="10" value="<%= update.rating %>"><br><br>
     <label for="note" value="note">Notes/Summary: </label><br>
-    <input class="textbox" type="text" name="note" id="note"><br><br>
+    <input class="textbox" type="text" name="note" id="note" value="<%= update.notes %>"><br><br>
     <button class="btn btn-primary" type="submit">SUBMIT</button>
 </form>
 </main>

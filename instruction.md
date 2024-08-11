@@ -69,5 +69,5 @@ Include a Readme.md file that explains how to start your server, what commands a
 # Remaining 
 1. Navigation bar
 2. icons and images
-3. edit section
+3. edit section , done
 4. sorting section
