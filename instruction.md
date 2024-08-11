@@ -65,3 +65,9 @@ Include a Readme.md file that explains how to start your server, what commands a
 8. Develop the backend.
 9. See the error handing.
 10. Update and upgrade the styling.
+
+# Remaining 
+1. Navigation bar
+2. icons and images
+3. edit section
+4. sorting section

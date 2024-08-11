@@ -7,6 +7,18 @@ h1{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 /* Main Section */
+.del_btn{
+    background-color: red;
+}
+.edit_btn{
+    background-color: green;
+}
+.booktitle{
+    font-size: 35px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: bold;
+    
+}
 
 /* Foot Section */
 .foot{
@@ -32,6 +44,7 @@ p{
 .form-label{
     color:#D8E9A8;
 }
+
 /* colors */
 /* 191A19 */
 /* 1E5128 */
